@@ -1,4 +1,18 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+
+export class CreateUserSettingsDto {
+  @IsOptional()
+  @IsBoolean()
+  receiveNotifcation?: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  receiveEmails?: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  receiveSMS?: boolean;
+}
 
 export class CreateUserDto {
   @IsNotEmpty()
@@ -8,4 +22,7 @@ export class CreateUserDto {
   @IsString()
   @IsOptional()
   displayName?: string;
+
+  @IsOptional()
+  settings?: CreateUserSettingsDto;
 }
